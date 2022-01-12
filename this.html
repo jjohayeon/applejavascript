@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict'; //자바스크립트를 엄격하게 
+        console.log(this) //window 기본함수들 
+
+        var 오브젝트 = {
+            data: 'Kim',
+            함수: function () {
+                console.log(this) //오브젝트 내 함수안에서 쓰면 (메소드), 
+                //오브젝트 내 함수안에서 쓰면 그 함수를 가지고 있는 오브젝트  = '오브젝트'
+            }
+        }
+        오브젝트.함수();
+
+        var 오브젝트2 = {
+            data: {
+                함수: function () {
+                    console.log(this) //this값 : 오브젝트 안의 오브젝트의 함수 = '함수'
+                }
+            }
+        }
+        오브젝트2.data.함수();
+
+        var 오브젝트3 = {
+            data: {
+                함수: () => {
+                    console.log(this) //this : window
+                }
+            }
+        }
+        오브젝트3.data.함수();
+
+        //this 그냥쓰거나 일반 함수 안에서 쓰면 {window}
+        // this를 오브젝트 내 함수안에서 쓰면 그 함수를 가지고있는 오브젝트를 가리킴
+        // 함수나 변수를 전역공간에서 만들면 {window}에 보관함 자바스크립트의 기본 타입은 객체(object)임
+    </script>
+</body>
+
+</html>
